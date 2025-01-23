@@ -1,5 +1,6 @@
 import os
 import re
+from transliterate import translit
 
 def main():
     file_path = 'allwordsinalllanguages/Russian/Russian.txt'
@@ -18,13 +19,14 @@ def main():
                     # Remove unwanted characters but keep commas
                     clean_text = re.sub(r'[^\w\s,]', '', text)  # Remove special characters except commas
                     clean_text = re.sub(r'\s+', ' ', clean_text.strip())  # Normalize spaces
-                    
+
                     # Debug: Display cleaned text
                     print("\nCleaned content:")
                     print(clean_text)
                     
                     # Split the text into words (retaining commas in the original content)
                     words = [word.strip() for word in clean_text.split(',') if word.strip()]
+
                     
                     # Debug: Display all detected words
                     print("\nProcessed Words:")
