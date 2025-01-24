@@ -1,0 +1,53 @@
+from transliterate import translit, get_available_language_codes
+from transliterate.base import TranslitLanguagePack, registry
+
+# Define the custom language pack
+class CustomRussianLanguagePack(TranslitLanguagePack):
+    language_code = "ru"
+    language_name = "Russian"
+    mapping = {
+        "А": "A", "а": "a", "Б": "B", "б": "b", "В": "V", "в": "v",
+        "Г": "G", "г": "g", "Д": "D", "д": "d", "Е": "E", "е": "e",
+        "Ё": "Yo", "ё": "yo", "Ж": "Zh", "ж": "zh", "З": "Z", "з": "z",
+        "И": "I", "и": "i", "Й": "Y", "й": "y", "К": "K", "к": "k",
+        "Л": "L", "л": "l", "М": "M", "м": "m", "Н": "N", "н": "n",
+        "О": "O", "о": "o", "П": "P", "п": "p", "Р": "R", "р": "r",
+        "С": "S", "с": "s", "Т": "T", "т": "t", "У": "U", "у": "u",
+        "Ф": "F", "ф": "f", "Х": "Kh", "х": "kh", "Ц": "Ts", "ц": "ts",
+        "Ч": "Ch", "ч": "ch", "Ш": "Sh", "ш": "sh", "Щ": "Shch", "щ": "shch",
+        "Ъ": "", "ъ": "", "Ы": "Y", "ы": "y", "Ь": "", "ь": "",
+        "Э": "E", "э": "e", "Ю": "Yu", "ю": "yu", "Я": "Ya", "я": "ya"
+    }
+
+reverse_mapping = {v: k for k, v in mapping.items()}
+
+    def __init__(self):
+        # Skip the parent class's translation table logic
+        self.translation_table = self.mapping
+        self.reversed_translation_table = self.reverse_mapping
+        # Do not call the base class __init__, since it uses `zip(*self.mapping)`
+
+    def transliterate(self, text, reversed=False):
+        """Custom transliteration logic."""
+        table = self.reversed_translation_table if reversed else self.translation_table
+        for key, val in table.items():
+            text = text.replace(key, val)
+        return text
+
+# Tests
+def test_transliteration_with_custom_pack():
+    result = translit("Привет", language_code="ru", reversed=False)
+    assert result == "Privet", f"Expected 'Privet', got '{result}'"
+
+def test_transliteration_reversed_with_custom_pack():
+    result = translit("Privet", language_code="ru", reversed=True)
+    assert result == "Привет", f"Expected 'Привет', got '{result}'"
+
+def test_manual_transliteration():
+    text = "Привет"
+    expected = "Privet"
+    mapping = CustomRussianLanguagePack.mapping
+    result = manual_transliteration(text, mapping)
+    assert result == expected, f"Expected '{expected}', got '{result}'"
+
+
