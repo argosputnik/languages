@@ -15,7 +15,7 @@ class CustomRussianLanguagePack(TranslitLanguagePack):
         "Ф": "F", "ф": "f", "Х": "Kh", "х": "kh", "Ц": "Ts", "ц": "ts",
         "Ч": "Ch", "ч": "ch", "Ш": "Sh", "ш": "sh", "Щ": "Shch", "щ": "shch",
         "Ъ": "", "ъ": "", "Ы": "Y", "ы": "y", "Ь": "", "ь": "",
-        "Э": "E", "э": "e", "Ю": "Yu", "ю": "yu", "Я": "Ya", "я": "ya"
+        "Э": "Eh", "э": "eh", "Ю": "Yu", "ю": "yu", "Я": "Ya", "я": "ya"
     }
 
     def __init__(self):

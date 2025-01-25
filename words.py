@@ -4,12 +4,14 @@ import re
 from transliterate import translit
 
 def main():
-    file_path = 'allwordsinalllanguages/Russian/Russian.txt'
+#File to be opened in non Latin alphabet
+    file_Russian         = 'allwordsinalllanguages/Russian/Russian.txt'
+    file_English         = 'allwordsinalllanguages/English/English.txt'
     
     # Check if the file exists
-    if os.path.exists(file_path):
+    if os.path.exists(file_English):
         try:
-            with open(file_path, 'r', encoding='utf-8') as file:
+            with open(file_English, 'r', encoding='utf-8') as file:
                 text = file.read()
                 
                 if text.strip():
