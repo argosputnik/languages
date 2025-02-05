@@ -1,7 +1,7 @@
 What started out as a passion for languages that only grew as I travelled and lived outside my own country has grown into the beginnings of what I hope will be a useful project for many people.
 
 ######NOTE####  
-Currently this project is in major production mode. Working with transliteration of Latin to Cyrillic scripts. 
+Currently this project is in major production mode. Working with transliterations of ISO standard of transliterations in linguistics. 
 
 1. Also will export all the words in the corpuses imported into this project into a postgres database.
 2. then work on more transliterations such as more Syrillic like Serbian, as well as exotic scripts like Georgian (wish me luck!!), as well as others
