@@ -1,0 +1,19 @@
+import os
+import psycopg2
+
+
+root_dir = '/home/jai/projects/languages/allwordsinalllanguages'
+
+# Traverse through the root directory and its subdirectories
+for dirpath, dirnames, filenames in os.walk(root_dir):
+    for file in filenames:
+        if file.endswith('.txt'):
+            file_path = os.path.join(dirpath, file)
+            try:
+                with open(file_path, 'r') as f:
+                    content = f.read()
+                    print(f'Contents of {file_path}:')
+                    print(content)
+                    print('-' * 40)
+            except Exception as e:
+                print(f"Error reading {file_path}: {e}")
