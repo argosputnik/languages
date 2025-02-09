@@ -1,0 +1,14 @@
+# Ignore PostgreSQL backup files
+*.dump
+*.sql
+
+# Ignore log files
+*.log
+
+#ignore .bak files
+*.bak
+
+# Ignore temporary files
+*.tmp
+*.swp
+*~
